@@ -71,7 +71,7 @@ namespace ScriptEditor
 				stgs.LastDirectory = Path.GetDirectoryName ( openFileDialog1.FileName );
 				SetFormText ( stgs.LastFilepath );
 
-				STS_TXT.Trace ( "読込" );
+//				STS_TXT.Trace ( "読込" );
 			}
 		}
 

@@ -29,6 +29,8 @@ namespace ScriptEditor
 			XML_IO.SettingFilepath = Directory.GetCurrentDirectory () + "\\setting.xml";
 			stgs = (Ctrl_Settings) XML_IO.Load ( stgs.GetType () );
 			SetFormText ( stgs.LastFilepath );
+
+			EditChara.Inst.Settings = stgs;
 		}
 
 		//---------------------------------------------------------------------

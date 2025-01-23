@@ -41,6 +41,11 @@ namespace ScriptEditor
 		//------------------------------------------
 		private void _LoadChara ( string filepath )
 		{
+			//強制描画
+			SetFormText ( "読込- 開始 " + filepath );
+			STS_TXT.Trace ( "読込 - 開始" );
+			this.Refresh ();
+
 #if false
 			//ドキュメント読込
 			LoadChara loadChara = new LoadChara ();
@@ -61,6 +66,10 @@ namespace ScriptEditor
 #if true
 #endif
 			//===============================================================
+
+			//タイトルバー編集中ファイル名更新(非保存表示を消去)
+			SetFormText ( "◆ 完了 ◆ 読込 - " + filepath );
+			STS_TXT.Trace ( "読込 - ◆ 完了 ◆" );
 		}
 
 		//キャラロード時に更新

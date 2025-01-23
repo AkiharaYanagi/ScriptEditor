@@ -14,13 +14,11 @@ namespace ScriptEditor
 			//@info 下記いずれかを環境で選ぶ
 			//-------------------------------
 
-#if false
 			//キャラ：空データ
 			SetCharaData ( chara );
 
 			//キャラ：テストデータ
 			TestCharaData ();
-#endif
 #if false
 
 			//個別データから作成
@@ -28,8 +26,10 @@ namespace ScriptEditor
 			LoadPreData ();
 #endif
 
+#if false
 			//自動で既存のキャラデータを読込
 			_LoadChara ( stgs.LastFilepath );
+#endif
 
 
 
