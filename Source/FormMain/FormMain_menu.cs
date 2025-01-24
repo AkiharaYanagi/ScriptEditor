@@ -20,9 +20,7 @@ namespace ScriptEditor
 		private void 上書保存ToolStripMenuItem_Click ( object sender, EventArgs e )
 		{
 			_SaveChara ( stgs.LastFilepath );
-
-			//パスの保存
-			XML_IO.Save ( stgs );
+			SavePath_Stg ( stgs.LastFilepath );		//パスの保存
 		}
 
 		private void 保存イメージ以外ToolStripMenuItem_Click ( object sender, System.EventArgs e )
@@ -48,21 +46,18 @@ namespace ScriptEditor
 
 			//初期ファイル名
 			saveFileDialog1.FileName = stgs.LastFilepath;
-			saveFileDialog1.OverwritePrompt = false;
+			saveFileDialog1.OverwritePrompt = true;
 			saveFileDialog1.Title = "別名保存";
 
+			STS_TXT.Trace ( "開始：別名保存" );
 			//ダイアログ開始
 			if ( saveFileDialog1.ShowDialog () == DialogResult.OK )
 			{
 				_SaveChara ( saveFileDialog1.FileName );
 
-				//パスの保存
-				stgs.LastFilepath = saveFileDialog1.FileName;
-				stgs.LastDirectory = Path.GetDirectoryName ( saveFileDialog1.FileName );
-				XML_IO.Save ( stgs );
-
-				STS_TXT.Trace ( "別名保存" );
+				SavePath_Stg ( saveFileDialog1.FileName );		//パスの保存
 			}
+			STS_TXT.Trace ( "◆◆完了：別名保存" );
 		}
 
 		private void 基準保存TToolStripMenuItem_Click ( object sender, EventArgs e )
@@ -78,18 +73,13 @@ namespace ScriptEditor
 			openFileDialog1.FileName = stgs.LastFilepath;
 			openFileDialog1.Title = "読込 ( *.dat )";
 			openFileDialog1.DefaultExt = "dat";
+			openFileDialog1.Filter = "キャラデータファイル(*.dat)|*.dat";
 
 			//ダイアログ開始
 			if ( openFileDialog1.ShowDialog () == DialogResult.OK )
 			{
 				_LoadChara ( openFileDialog1.FileName );
-
-				//パスの保存
-				stgs.LastFilepath = openFileDialog1.FileName;
-				stgs.LastDirectory = Path.GetDirectoryName ( openFileDialog1.FileName );
-				SetFormText ( stgs.LastFilepath );
-
-//				STS_TXT.Trace ( "読込" );
+				SavePath_Stg ( openFileDialog1.FileName );		//パスの保存
 			}
 		}
 
@@ -108,6 +98,7 @@ namespace ScriptEditor
 				LoadCharaImg loadCharaImg = new LoadCharaImg ();
 				loadCharaImg.Do_dir ( openFileDialog1.FileName, chara );
 				LoadCharaData ();
+				SavePath_Stg ( openFileDialog1.FileName );		//パスの保存
 			}
 			STS_TXT.Trace ( "◆◆完了：読込 scp + dir" );
 		}
@@ -127,6 +118,7 @@ namespace ScriptEditor
 				LoadCharaImg loadCharaImg = new LoadCharaImg ();
 				loadCharaImg.Do_img ( openFileDialog1.FileName, chara );
 				LoadCharaData ();
+				SavePath_Stg ( openFileDialog1.FileName );		//パスの保存
 			}
 			STS_TXT.Trace ( "◆◆完了：読込 scp + img" );
 		}
@@ -137,12 +129,14 @@ namespace ScriptEditor
 			//ダイアログ中の初期ファイル名
 			openFileDialog1.FileName = stgs.LastFilepath;
 			openFileDialog1.Title = "テキストから読込 ( *.txt )";
+			openFileDialog1.Filter = "キャラデータファイル(*.txt)|*.txt";
 
 			//ダイアログ開始
 			if ( openFileDialog1.ShowDialog () == DialogResult.OK )
 			{
 				LoadTextChara loadChara = new LoadTextChara ( openFileDialog1.FileName, chara );
 				LoadCharaData ();
+				SavePath_Stg ( openFileDialog1.FileName );		//パスの保存
 			}
 		}
 
@@ -151,6 +145,7 @@ namespace ScriptEditor
 			//ダイアログ中の初期ファイル名
 			openFileDialog1.FileName = stgs.LastFilepath;
 			openFileDialog1.Title = "バイナリから読込";
+			openFileDialog1.Filter = "キャラデータファイル(*.dat)|*.dat";
 
 			//ダイアログ開始
 			if ( openFileDialog1.ShowDialog () == DialogResult.OK )
@@ -158,6 +153,7 @@ namespace ScriptEditor
 				LoadCharaBin loadCharaBin = new LoadCharaBin ();
 				loadCharaBin.Do ( openFileDialog1.FileName, chara );
 				LoadCharaData ();
+				SavePath_Stg ( openFileDialog1.FileName );		//パスの保存
 			}
 		}
 
@@ -197,7 +193,18 @@ namespace ScriptEditor
 			}
 			STS_TXT.Trace ( "Name Check OK." );
 		}
+
+		//パスの保存
+		private void SavePath_Stg ( string path )
+		{
+			//パスの保存
+			stgs.LastFilepath = path;
+			stgs.LastDirectory = Path.GetDirectoryName ( path );
+			XML_IO.Save ( stgs );
+			SetFormText ( stgs.LastFilepath );
+		}
 	}
+
 
 }
 
