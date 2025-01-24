@@ -25,6 +25,22 @@ namespace ScriptEditor
 			XML_IO.Save ( stgs );
 		}
 
+		private void 保存イメージ以外ToolStripMenuItem_Click ( object sender, System.EventArgs e )
+		{
+			STS_TXT.Trace ( "開始：保存 イメージ以外 scp + dir" );
+			SaveCharaImg saveCharaImg = new SaveCharaImg();
+			saveCharaImg.DoWithoutImg ( stgs.LastFilepath, chara );
+			STS_TXT.Trace ( "◆◆完了：保存 イメージ以外" );
+		}
+
+		private void 保存イメージ込みToolStripMenuItem_Click ( object sender, System.EventArgs e )
+		{
+			STS_TXT.Trace ( "開始：保存 イメージ込み scp + img" );
+			SaveCharaImg saveCharaImg = new SaveCharaImg();
+			saveCharaImg.DoIncludeImg ( stgs.LastFilepath, chara );
+			STS_TXT.Trace ( "◆◆完了：保存 イメージ込み" );
+		}
+
 		private void 別名保存ToolStripMenuItem_Click ( object sender, EventArgs e )
 		{
 			//基本拡張子
@@ -32,8 +48,8 @@ namespace ScriptEditor
 
 			//初期ファイル名
 			saveFileDialog1.FileName = stgs.LastFilepath;
-
 			saveFileDialog1.OverwritePrompt = false;
+			saveFileDialog1.Title = "別名保存";
 
 			//ダイアログ開始
 			if ( saveFileDialog1.ShowDialog () == DialogResult.OK )
@@ -60,6 +76,8 @@ namespace ScriptEditor
 		{
 			//ダイアログ中の初期ファイル名
 			openFileDialog1.FileName = stgs.LastFilepath;
+			openFileDialog1.Title = "読込 ( *.dat )";
+			openFileDialog1.DefaultExt = "dat";
 
 			//ダイアログ開始
 			if ( openFileDialog1.ShowDialog () == DialogResult.OK )
@@ -75,10 +93,50 @@ namespace ScriptEditor
 			}
 		}
 
+		//読込 ( scp + dir )
+		private void 読込イメージ以外ToolStripMenuItem_Click ( object sender, System.EventArgs e )
+		{
+			//ダイアログ中の初期ファイル名
+			openFileDialog1.FileName = stgs.LastFilepath;
+			openFileDialog1.Title = "読込 ( scp + dir )";
+			openFileDialog1.Filter = "スクリプトファイル(*.scp)|*.scp";
+
+			STS_TXT.Trace ( "開始：読込 scp + dir" );
+			//ダイアログ開始
+			if ( openFileDialog1.ShowDialog () == DialogResult.OK )
+			{
+				LoadCharaImg loadCharaImg = new LoadCharaImg ();
+				loadCharaImg.Do_dir ( openFileDialog1.FileName, chara );
+				LoadCharaData ();
+			}
+			STS_TXT.Trace ( "◆◆完了：読込 scp + dir" );
+		}
+
+		//読込 ( scp + img )
+		private void 読込scpimgToolStripMenuItem_Click ( object sender, System.EventArgs e )
+		{
+			//ダイアログ中の初期ファイル名
+			openFileDialog1.FileName = stgs.LastFilepath;
+			openFileDialog1.Title = "読込 ( scp + img )";
+			openFileDialog1.Filter = "スクリプトファイル(*.scp)|*.scp";
+
+			STS_TXT.Trace ( "開始：読込 scp + img" );
+			//ダイアログ開始
+			if ( openFileDialog1.ShowDialog () == DialogResult.OK )
+			{
+				LoadCharaImg loadCharaImg = new LoadCharaImg ();
+				loadCharaImg.Do_img ( openFileDialog1.FileName, chara );
+				LoadCharaData ();
+			}
+			STS_TXT.Trace ( "◆◆完了：読込 scp + img" );
+		}
+
+
 		private void テキストから読込ToolStripMenuItem_Click ( object sender, System.EventArgs e )
 		{
 			//ダイアログ中の初期ファイル名
 			openFileDialog1.FileName = stgs.LastFilepath;
+			openFileDialog1.Title = "テキストから読込 ( *.txt )";
 
 			//ダイアログ開始
 			if ( openFileDialog1.ShowDialog () == DialogResult.OK )
@@ -92,13 +150,13 @@ namespace ScriptEditor
 		{
 			//ダイアログ中の初期ファイル名
 			openFileDialog1.FileName = stgs.LastFilepath;
+			openFileDialog1.Title = "バイナリから読込";
 
 			//ダイアログ開始
 			if ( openFileDialog1.ShowDialog () == DialogResult.OK )
 			{
 				LoadCharaBin loadCharaBin = new LoadCharaBin ();
 				loadCharaBin.Do ( openFileDialog1.FileName, chara );
-
 				LoadCharaData ();
 			}
 		}

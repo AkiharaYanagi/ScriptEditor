@@ -104,6 +104,20 @@
     <Compile Include="Source\FormSub\FormEfGnrt\FormEfGnrt.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Source\FormSub\FormImage\Form_Image.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\FormSub\FormImage\Form_Image.designer.cs">
+      <DependentUpon>Form_Image.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\FormSub\FormPreview\FormPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\FormSub\FormPreview\FormPreview.Designer.cs">
+      <DependentUpon>FormPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\FormSub\FormPreview\FrameControl.cs" />
+    <Compile Include="Source\FormSub\FormPreview\GameMain.cs" />
     <Compile Include="Source\FormSub\FormRect\FormRect2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,20 +129,6 @@
     </Compile>
     <Compile Include="Source\FormSub\FormRoute\FormRoute.Designer.cs">
       <DependentUpon>FormRoute.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Source\FormSub\FormPreview\FormPreview.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Source\FormSub\FormPreview\FormPreview.Designer.cs">
-      <DependentUpon>FormPreview.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Source\FormSub\FormPreview\FrameControl.cs" />
-    <Compile Include="Source\FormSub\FormPreview\GameMain.cs" />
-    <Compile Include="Source\FormSub\FormImage\Form_Image.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Source\FormSub\FormImage\Form_Image.designer.cs">
-      <DependentUpon>Form_Image.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\FormSub\FormScriptList\Form_ScriptList.cs">
       <SubType>Form</SubType>
@@ -149,17 +149,17 @@
     <EmbeddedResource Include="Source\FormSub\FormEfGnrt\FormEfGnrt.resx">
       <DependentUpon>FormEfGnrt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\FormSub\FormRect\FormRect2.resx">
-      <DependentUpon>FormRect2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Source\FormSub\FormRoute\FormRoute.resx">
-      <DependentUpon>FormRoute.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Source\FormSub\FormImage\Form_Image.resx">
       <DependentUpon>Form_Image.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\FormSub\FormPreview\FormPreview.resx">
       <DependentUpon>FormPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\FormSub\FormRect\FormRect2.resx">
+      <DependentUpon>FormRect2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\FormSub\FormRoute\FormRoute.resx">
+      <DependentUpon>FormRoute.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\FormSub\FormScriptList\Form_ScriptList.resx">
       <DependentUpon>Form_ScriptList.cs</DependentUpon>
@@ -190,8 +190,9 @@
     <Reference Include="Chara">
       <HintPath>..\..\ScriptEditorUtility\Dll\Chara.dll</HintPath>
     </Reference>
-    <Reference Include="Ctrl_Chara">
-      <HintPath>..\..\ScriptEditorUtility\Dll\Ctrl_Chara.dll</HintPath>
+    <Reference Include="Ctrl_Chara, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ScriptEditorUtility\Dll\Ctrl_Chara.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack">
       <HintPath>..\..\ScriptEditorUtility\Dll\Microsoft.WindowsAPICodePack.dll</HintPath>

@@ -32,13 +32,19 @@
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.フォルダToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.上書保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.特殊保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.保存イメージ以外ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.保存イメージ込みToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.別名保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.基準保存TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.基準保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.読込ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.特殊読込ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.読込イメージ以外ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.テキストから読込ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.バイナリから読込BToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.バイナリから読込ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.新規NToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.プレデータToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.名前チェックToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -51,7 +57,7 @@
 			this.tabRoute = new System.Windows.Forms.TabPage();
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-			this.名前チェックToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.読込scpimgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
@@ -63,11 +69,9 @@
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.フォルダToolStripMenuItem,
             this.上書保存ToolStripMenuItem,
-            this.別名保存ToolStripMenuItem,
-            this.基準保存TToolStripMenuItem,
+            this.特殊保存ToolStripMenuItem,
             this.読込ToolStripMenuItem,
-            this.テキストから読込ToolStripMenuItem,
-            this.バイナリから読込BToolStripMenuItem,
+            this.特殊読込ToolStripMenuItem,
             this.新規NToolStripMenuItem,
             this.プレデータToolStripMenuItem,
             this.名前チェックToolStripMenuItem});
@@ -87,48 +91,95 @@
 			// 
 			// 上書保存ToolStripMenuItem
 			// 
+			this.上書保存ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
 			this.上書保存ToolStripMenuItem.Name = "上書保存ToolStripMenuItem";
 			this.上書保存ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
 			this.上書保存ToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
 			this.上書保存ToolStripMenuItem.Text = "上書保存(&S)";
 			this.上書保存ToolStripMenuItem.Click += new System.EventHandler(this.上書保存ToolStripMenuItem_Click);
 			// 
+			// 特殊保存ToolStripMenuItem
+			// 
+			this.特殊保存ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+			this.特殊保存ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.保存イメージ以外ToolStripMenuItem,
+            this.保存イメージ込みToolStripMenuItem,
+            this.別名保存ToolStripMenuItem,
+            this.基準保存ToolStripMenuItem});
+			this.特殊保存ToolStripMenuItem.Name = "特殊保存ToolStripMenuItem";
+			this.特殊保存ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+			this.特殊保存ToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
+			this.特殊保存ToolStripMenuItem.Text = "特殊保存(&A)";
+			// 
+			// 保存イメージ以外ToolStripMenuItem
+			// 
+			this.保存イメージ以外ToolStripMenuItem.Name = "保存イメージ以外ToolStripMenuItem";
+			this.保存イメージ以外ToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+			this.保存イメージ以外ToolStripMenuItem.Text = "保存(イメージ以外)";
+			this.保存イメージ以外ToolStripMenuItem.Click += new System.EventHandler(this.保存イメージ以外ToolStripMenuItem_Click);
+			// 
+			// 保存イメージ込みToolStripMenuItem
+			// 
+			this.保存イメージ込みToolStripMenuItem.Name = "保存イメージ込みToolStripMenuItem";
+			this.保存イメージ込みToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+			this.保存イメージ込みToolStripMenuItem.Text = "保存(イメージ込み)";
+			this.保存イメージ込みToolStripMenuItem.Click += new System.EventHandler(this.保存イメージ込みToolStripMenuItem_Click);
+			// 
 			// 別名保存ToolStripMenuItem
 			// 
 			this.別名保存ToolStripMenuItem.Name = "別名保存ToolStripMenuItem";
-			this.別名保存ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.S)));
-			this.別名保存ToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
-			this.別名保存ToolStripMenuItem.Text = "別名保存(&A)";
+			this.別名保存ToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+			this.別名保存ToolStripMenuItem.Text = "別名保存";
 			this.別名保存ToolStripMenuItem.Click += new System.EventHandler(this.別名保存ToolStripMenuItem_Click);
 			// 
-			// 基準保存TToolStripMenuItem
+			// 基準保存ToolStripMenuItem
 			// 
-			this.基準保存TToolStripMenuItem.Name = "基準保存TToolStripMenuItem";
-			this.基準保存TToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
-			this.基準保存TToolStripMenuItem.Text = "基準保存(&T)";
-			this.基準保存TToolStripMenuItem.Click += new System.EventHandler(this.基準保存TToolStripMenuItem_Click);
+			this.基準保存ToolStripMenuItem.Name = "基準保存ToolStripMenuItem";
+			this.基準保存ToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+			this.基準保存ToolStripMenuItem.Text = "基準保存";
+			this.基準保存ToolStripMenuItem.Click += new System.EventHandler(this.基準保存TToolStripMenuItem_Click);
 			// 
 			// 読込ToolStripMenuItem
 			// 
+			this.読込ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
 			this.読込ToolStripMenuItem.Name = "読込ToolStripMenuItem";
 			this.読込ToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
 			this.読込ToolStripMenuItem.Text = "読込(&O)";
 			this.読込ToolStripMenuItem.Click += new System.EventHandler(this.読込ToolStripMenuItem_Click);
 			// 
+			// 特殊読込ToolStripMenuItem
+			// 
+			this.特殊読込ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+			this.特殊読込ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.読込イメージ以外ToolStripMenuItem,
+            this.読込scpimgToolStripMenuItem,
+            this.テキストから読込ToolStripMenuItem,
+            this.バイナリから読込ToolStripMenuItem});
+			this.特殊読込ToolStripMenuItem.Name = "特殊読込ToolStripMenuItem";
+			this.特殊読込ToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
+			this.特殊読込ToolStripMenuItem.Text = "特殊読込(&T)";
+			// 
+			// 読込イメージ以外ToolStripMenuItem
+			// 
+			this.読込イメージ以外ToolStripMenuItem.Name = "読込イメージ以外ToolStripMenuItem";
+			this.読込イメージ以外ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.読込イメージ以外ToolStripMenuItem.Text = "読込(scp+dir)";
+			this.読込イメージ以外ToolStripMenuItem.Click += new System.EventHandler(this.読込イメージ以外ToolStripMenuItem_Click);
+			// 
 			// テキストから読込ToolStripMenuItem
 			// 
 			this.テキストから読込ToolStripMenuItem.Name = "テキストから読込ToolStripMenuItem";
-			this.テキストから読込ToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
-			this.テキストから読込ToolStripMenuItem.Text = "テキストから読込(&T)";
+			this.テキストから読込ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.テキストから読込ToolStripMenuItem.Text = "テキストから読込";
 			this.テキストから読込ToolStripMenuItem.Click += new System.EventHandler(this.テキストから読込ToolStripMenuItem_Click);
 			// 
-			// バイナリから読込BToolStripMenuItem
+			// バイナリから読込ToolStripMenuItem
 			// 
-			this.バイナリから読込BToolStripMenuItem.Name = "バイナリから読込BToolStripMenuItem";
-			this.バイナリから読込BToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
-			this.バイナリから読込BToolStripMenuItem.Text = "バイナリから読込(&B)";
-			this.バイナリから読込BToolStripMenuItem.Click += new System.EventHandler(this.バイナリから読込BToolStripMenuItem_Click);
+			this.バイナリから読込ToolStripMenuItem.Name = "バイナリから読込ToolStripMenuItem";
+			this.バイナリから読込ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.バイナリから読込ToolStripMenuItem.Text = "バイナリから読込";
+			this.バイナリから読込ToolStripMenuItem.Click += new System.EventHandler(this.バイナリから読込BToolStripMenuItem_Click);
 			// 
 			// 新規NToolStripMenuItem
 			// 
@@ -143,6 +194,13 @@
 			this.プレデータToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
 			this.プレデータToolStripMenuItem.Text = "プレデータ";
 			this.プレデータToolStripMenuItem.Click += new System.EventHandler(this.プレデータToolStripMenuItem_Click);
+			// 
+			// 名前チェックToolStripMenuItem
+			// 
+			this.名前チェックToolStripMenuItem.Name = "名前チェックToolStripMenuItem";
+			this.名前チェックToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+			this.名前チェックToolStripMenuItem.Text = "名前チェック";
+			this.名前チェックToolStripMenuItem.Click += new System.EventHandler(this.名前チェックToolStripMenuItem_Click);
 			// 
 			// statusStrip1
 			// 
@@ -251,12 +309,12 @@
 			// 
 			this.openFileDialog1.FileName = "openFileDialog1";
 			// 
-			// 名前チェックToolStripMenuItem
+			// 読込scpimgToolStripMenuItem
 			// 
-			this.名前チェックToolStripMenuItem.Name = "名前チェックToolStripMenuItem";
-			this.名前チェックToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
-			this.名前チェックToolStripMenuItem.Text = "名前チェック";
-			this.名前チェックToolStripMenuItem.Click += new System.EventHandler(this.名前チェックToolStripMenuItem_Click);
+			this.読込scpimgToolStripMenuItem.Name = "読込scpimgToolStripMenuItem";
+			this.読込scpimgToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.読込scpimgToolStripMenuItem.Text = "読込(scp+img)";
+			this.読込scpimgToolStripMenuItem.Click += new System.EventHandler(this.読込scpimgToolStripMenuItem_Click);
 			// 
 			// FormMain
 			// 
@@ -293,21 +351,27 @@
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tabScriptA;
 		private System.Windows.Forms.TabPage tabCommand;
-		private System.Windows.Forms.ToolStripMenuItem 別名保存ToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem 基準保存TToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 特殊保存ToolStripMenuItem;
 		private System.Windows.Forms.TabPage tabScriptE;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
 		private System.Windows.Forms.SaveFileDialog saveFileDialog1;
 		private System.Windows.Forms.OpenFileDialog openFileDialog1;
-		private System.Windows.Forms.ToolStripMenuItem テキストから読込ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 特殊読込ToolStripMenuItem;
 		private System.Windows.Forms.TabPage tabBranch;
 		private System.Windows.Forms.TabPage tabRoute;
 		private System.Windows.Forms.TabPage tabAction;
 		private System.Windows.Forms.TabPage tabEffect;
-		private System.Windows.Forms.ToolStripMenuItem バイナリから読込BToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem 新規NToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem プレデータToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem 名前チェックToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 読込イメージ以外ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem テキストから読込ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem バイナリから読込ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 保存イメージ以外ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 保存イメージ込みToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 別名保存ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 基準保存ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 読込scpimgToolStripMenuItem;
 	}
 }
 
