@@ -19,8 +19,21 @@ namespace ScriptEditor
 
 		private void 上書保存ToolStripMenuItem_Click ( object sender, EventArgs e )
 		{
+			string filepath = stgs.LastFilepath;
+
+			//強制描画
+			SetFormText ( "上書保存 - 開始 " + filepath );
+			STS_TXT.Trace ( "上書保存 - 開始" );
+			this.Refresh ();
+
+
 			_SaveChara ( stgs.LastFilepath );
 			SavePath_Stg ( stgs.LastFilepath );		//パスの保存
+
+			//タイトルバー編集中ファイル名更新(非保存表示を消去)
+			//SetFormText ( "◆ 完了 ◆ 上書保存 - " + filepath );
+			this.Text = "◆ 完了 ◆ 上書保存 - " + filepath;
+			STS_TXT.Trace ( "上書保存 - ◆ 完了 ◆" );
 		}
 
 		private void 保存イメージ以外ToolStripMenuItem_Click ( object sender, System.EventArgs e )
