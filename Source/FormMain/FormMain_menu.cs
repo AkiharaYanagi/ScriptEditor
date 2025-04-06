@@ -38,10 +38,25 @@ namespace ScriptEditor
 
 		private void 保存イメージ以外ToolStripMenuItem_Click ( object sender, System.EventArgs e )
 		{
-			STS_TXT.Trace ( "開始：保存 イメージ以外 scp + dir" );
-			SaveCharaImg saveCharaImg = new SaveCharaImg();
-			saveCharaImg.DoWithoutImg ( stgs.LastFilepath, chara );
-			STS_TXT.Trace ( "◆◆完了：保存 イメージ以外" );
+			//基本拡張子
+			saveFileDialog1.DefaultExt = "scp";
+
+			//初期ファイル名
+			string fn_wex = Path.GetFileNameWithoutExtension ( stgs.LastFilepath );
+			saveFileDialog1.FileName = fn_wex + ".scp";
+			saveFileDialog1.OverwritePrompt = true;
+			saveFileDialog1.Title = "保存 イメージ以外 scp";
+
+			STS_TXT.Trace ( "開始：保存 イメージ以外 scp" );
+
+			//ダイアログ開始
+			if ( saveFileDialog1.ShowDialog () == DialogResult.OK )
+			{
+				SaveCharaImg saveCharaImg = new SaveCharaImg();
+				saveCharaImg.DoWithoutImg ( saveFileDialog1.FileName, chara );
+				STS_TXT.Trace ( "◆◆完了：保存 イメージ以外" );
+			}
+
 		}
 
 		private void 保存イメージ込みToolStripMenuItem_Click ( object sender, System.EventArgs e )
