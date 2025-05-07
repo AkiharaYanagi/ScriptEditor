@@ -23,6 +23,13 @@ namespace ScriptEditor
 #endif
 			SaveCharaBin saveCharaBin = new SaveCharaBin ();
 			saveCharaBin.Do ( filepath, chara );
+			
+
+			//.scpファイルも保存
+			string fn_wex = Path.GetFileNameWithoutExtension ( filepath );
+			saveFileDialog1.FileName = fn_wex + ".scp";
+			SaveCharaImg saveCharaImg = new SaveCharaImg();
+			saveCharaImg.DoWithoutImg ( saveFileDialog1.FileName, chara );
 
 		}
 
