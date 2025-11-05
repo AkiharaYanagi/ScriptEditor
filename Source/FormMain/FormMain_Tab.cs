@@ -78,6 +78,7 @@ namespace ScriptEditor
 		public void tabAction_Deselected ()
 		{
 			//アクション
+			ctrl_SqcList_Act.SaveSelectedSqcName ();
 			ctrl_SqcList_Act.ApplyData_Action ();
 			All_Ctrl.Inst.Compend_Bhv.UpdateSqcTree ();
 			All_Ctrl.Inst.UpdateData ();
@@ -93,7 +94,8 @@ namespace ScriptEditor
 			All_Ctrl.Inst.SetEditCompend ( eb );
 
 			//選択状態
-			string sqcName =  ctrl_SqcList_Act.SelectedSqcName ();
+			//string sqcName =  ctrl_SqcList_Act.SelectedSqcName ();
+			string sqcName = ctrl_SqcList_Act.GetLastSelectedSqcName ();
 			ctrl_cmpd_bhv.SelectFromName ( sqcName );
 			eb.SelectSequence ( sqcName );
 		}
