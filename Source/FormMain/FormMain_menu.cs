@@ -151,7 +151,6 @@ namespace ScriptEditor
 			STS_TXT.Trace ( "◆◆完了：読込 scp + img" );
 		}
 
-
 		private void テキストから読込ToolStripMenuItem_Click ( object sender, System.EventArgs e )
 		{
 			//ダイアログ中の初期ファイル名
@@ -183,6 +182,26 @@ namespace ScriptEditor
 				LoadCharaData ();
 				SavePath_Stg ( openFileDialog1.FileName );		//パスの保存
 			}
+		}
+
+		//scp置換読込
+		private void scp置換読込ToolStripMenuItem_Click ( object sender, System.EventArgs e )
+		{
+			//ダイアログ中の初期ファイル名
+			openFileDialog1.FileName = stgs.LastFilepath;
+			openFileDialog1.Title = "scp置換読込";
+			openFileDialog1.Filter = "スクリプトファイル(*.scp)|*.scp";
+
+			STS_TXT.Trace ( "開始：読込 scp" );
+			//ダイアログ開始
+			if ( openFileDialog1.ShowDialog () == DialogResult.OK )
+			{
+				LoadCharaImg loadCharaImg = new LoadCharaImg ();
+				loadCharaImg.Do_dir ( openFileDialog1.FileName, chara );
+				LoadCharaData ();
+				SavePath_Stg ( openFileDialog1.FileName );      //パスの保存
+			}
+			STS_TXT.Trace ( "◆◆完了：scp置換読込" );
 		}
 
 		private void 新規NToolStripMenuItem_Click ( object sender, System.EventArgs e )

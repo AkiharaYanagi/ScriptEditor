@@ -60,6 +60,5 @@ namespace ScriptEditor
 		{
 			//ctrl_SqcList_Act.Refresh ();
 		}
-
 	}
 }
