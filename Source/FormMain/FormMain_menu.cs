@@ -54,6 +54,7 @@ namespace ScriptEditor
 			{
 				SaveCharaImg saveCharaImg = new SaveCharaImg();
 				saveCharaImg.DoWithoutImg ( saveFileDialog1.FileName, chara );
+				this.Text = "◆ 完了 ◆ scp 保存 - " + saveFileDialog1.FileName;
 				STS_TXT.Trace ( "◆◆完了：保存 イメージ以外" );
 			}
 
