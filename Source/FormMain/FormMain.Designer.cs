@@ -32,6 +32,7 @@
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.フォルダToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.上書保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.SCP保存toolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.特殊保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.保存イメージ以外ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.保存イメージ込みToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,6 +44,7 @@
 			this.読込scpimgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.テキストから読込ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.バイナリから読込ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.scp置換読込ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.新規NToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.プレデータToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.名前チェックToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,7 +60,6 @@
 			this.tabRoute = new System.Windows.Forms.TabPage();
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-			this.scp置換読込ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
@@ -70,6 +71,7 @@
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.フォルダToolStripMenuItem,
             this.上書保存ToolStripMenuItem,
+            this.SCP保存toolStripMenuItem,
             this.特殊保存ToolStripMenuItem,
             this.読込ToolStripMenuItem,
             this.特殊読込ToolStripMenuItem,
@@ -99,6 +101,14 @@
 			this.上書保存ToolStripMenuItem.Text = "上書保存(&S)";
 			this.上書保存ToolStripMenuItem.Click += new System.EventHandler(this.上書保存ToolStripMenuItem_Click);
 			// 
+			// SCP保存toolStripMenuItem
+			// 
+			this.SCP保存toolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+			this.SCP保存toolStripMenuItem.Name = "SCP保存toolStripMenuItem";
+			this.SCP保存toolStripMenuItem.Size = new System.Drawing.Size(78, 20);
+			this.SCP保存toolStripMenuItem.Text = "SCP保存(&P)";
+			this.SCP保存toolStripMenuItem.Click += new System.EventHandler(this.SCP保存toolStripMenuItem_Click);
+			// 
 			// 特殊保存ToolStripMenuItem
 			// 
 			this.特殊保存ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -116,28 +126,28 @@
 			// 保存イメージ以外ToolStripMenuItem
 			// 
 			this.保存イメージ以外ToolStripMenuItem.Name = "保存イメージ以外ToolStripMenuItem";
-			this.保存イメージ以外ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.保存イメージ以外ToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
 			this.保存イメージ以外ToolStripMenuItem.Text = "保存(イメージ以外)";
 			this.保存イメージ以外ToolStripMenuItem.Click += new System.EventHandler(this.保存イメージ以外ToolStripMenuItem_Click);
 			// 
 			// 保存イメージ込みToolStripMenuItem
 			// 
 			this.保存イメージ込みToolStripMenuItem.Name = "保存イメージ込みToolStripMenuItem";
-			this.保存イメージ込みToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.保存イメージ込みToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
 			this.保存イメージ込みToolStripMenuItem.Text = "保存(イメージ込み)";
 			this.保存イメージ込みToolStripMenuItem.Click += new System.EventHandler(this.保存イメージ込みToolStripMenuItem_Click);
 			// 
 			// 別名保存ToolStripMenuItem
 			// 
 			this.別名保存ToolStripMenuItem.Name = "別名保存ToolStripMenuItem";
-			this.別名保存ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.別名保存ToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
 			this.別名保存ToolStripMenuItem.Text = "別名保存";
 			this.別名保存ToolStripMenuItem.Click += new System.EventHandler(this.別名保存ToolStripMenuItem_Click);
 			// 
 			// 基準保存ToolStripMenuItem
 			// 
 			this.基準保存ToolStripMenuItem.Name = "基準保存ToolStripMenuItem";
-			this.基準保存ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.基準保存ToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
 			this.基準保存ToolStripMenuItem.Text = "基準保存";
 			this.基準保存ToolStripMenuItem.Click += new System.EventHandler(this.基準保存TToolStripMenuItem_Click);
 			// 
@@ -165,30 +175,37 @@
 			// 読込イメージ以外ToolStripMenuItem
 			// 
 			this.読込イメージ以外ToolStripMenuItem.Name = "読込イメージ以外ToolStripMenuItem";
-			this.読込イメージ以外ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.読込イメージ以外ToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
 			this.読込イメージ以外ToolStripMenuItem.Text = "読込(scp+dir)";
 			this.読込イメージ以外ToolStripMenuItem.Click += new System.EventHandler(this.読込イメージ以外ToolStripMenuItem_Click);
 			// 
 			// 読込scpimgToolStripMenuItem
 			// 
 			this.読込scpimgToolStripMenuItem.Name = "読込scpimgToolStripMenuItem";
-			this.読込scpimgToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.読込scpimgToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
 			this.読込scpimgToolStripMenuItem.Text = "読込(scp+img)";
 			this.読込scpimgToolStripMenuItem.Click += new System.EventHandler(this.読込scpimgToolStripMenuItem_Click);
 			// 
 			// テキストから読込ToolStripMenuItem
 			// 
 			this.テキストから読込ToolStripMenuItem.Name = "テキストから読込ToolStripMenuItem";
-			this.テキストから読込ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.テキストから読込ToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
 			this.テキストから読込ToolStripMenuItem.Text = "テキストから読込";
 			this.テキストから読込ToolStripMenuItem.Click += new System.EventHandler(this.テキストから読込ToolStripMenuItem_Click);
 			// 
 			// バイナリから読込ToolStripMenuItem
 			// 
 			this.バイナリから読込ToolStripMenuItem.Name = "バイナリから読込ToolStripMenuItem";
-			this.バイナリから読込ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.バイナリから読込ToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
 			this.バイナリから読込ToolStripMenuItem.Text = "バイナリから読込";
 			this.バイナリから読込ToolStripMenuItem.Click += new System.EventHandler(this.バイナリから読込BToolStripMenuItem_Click);
+			// 
+			// scp置換読込ToolStripMenuItem
+			// 
+			this.scp置換読込ToolStripMenuItem.Name = "scp置換読込ToolStripMenuItem";
+			this.scp置換読込ToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+			this.scp置換読込ToolStripMenuItem.Text = "scp置換読込";
+			this.scp置換読込ToolStripMenuItem.Click += new System.EventHandler(this.scp置換読込ToolStripMenuItem_Click);
 			// 
 			// 新規NToolStripMenuItem
 			// 
@@ -318,13 +335,6 @@
 			// 
 			this.openFileDialog1.FileName = "openFileDialog1";
 			// 
-			// scp置換読込ToolStripMenuItem
-			// 
-			this.scp置換読込ToolStripMenuItem.Name = "scp置換読込ToolStripMenuItem";
-			this.scp置換読込ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.scp置換読込ToolStripMenuItem.Text = "scp置換読込";
-			this.scp置換読込ToolStripMenuItem.Click += new System.EventHandler(this.scp置換読込ToolStripMenuItem_Click);
-			// 
 			// FormMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -382,6 +392,7 @@
 		private System.Windows.Forms.ToolStripMenuItem 基準保存ToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem 読込scpimgToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem scp置換読込ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem SCP保存toolStripMenuItem;
 	}
 }
 

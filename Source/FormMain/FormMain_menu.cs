@@ -36,6 +36,25 @@ namespace ScriptEditor
 			STS_TXT.Trace ( "上書保存 - ◆ 完了 ◆" );
 		}
 
+		private void SCP保存toolStripMenuItem_Click ( object sender, System.EventArgs e )
+		{
+			//ファイル名
+			string dir = Path.GetDirectoryName ( stgs.LastFilepath );
+			string fn_wex = Path.GetFileNameWithoutExtension ( stgs.LastFilepath );
+			string filePath = dir + "\\" + fn_wex + ".scp";
+			if ( ! File.Exists ( filePath ) )
+			{
+				filePath = Directory.GetCurrentDirectory() + fn_wex + ".scp";
+			}
+
+			//ダイアログ無し保存
+			STS_TXT.Trace ( "開始：保存 イメージ以外 scp" );
+			SaveCharaImg saveCharaImg = new SaveCharaImg ();
+			saveCharaImg.DoWithoutImg ( filePath, chara );
+			this.Text = "◆ 完了 ◆ scp 保存 - " + filePath;
+			STS_TXT.Trace ( "◆◆完了：保存 イメージ以外" );
+		}
+
 		private void 保存イメージ以外ToolStripMenuItem_Click ( object sender, System.EventArgs e )
 		{
 			//基本拡張子
